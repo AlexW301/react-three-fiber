@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/cannon": "^6.3.0",
+    "@react-three/drei": "^9.7.1",
+    "@react-three/fiber": "^8.0.14",
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "three": "^0.140.2"
   },
   "devDependencies": {
     "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "next-transpile-modules": "^9.0.0"
   }
 }
