@@ -21,7 +21,7 @@ const OctohedronMesh = ({position}) => {
         occlude
         onOcclude={setVisible}>
         <h1>Hello</h1>
-        <button onClick={() => {setDynamicPosition([(Math.random() - 0.5) * 3, (Math.random() - 0.5) * 3, 0])}}>Click Here</button>
+        <button style={{ background: 'white', border: 'none', borderRadius: '30px', padding: '.5rem 1rem', cursor: 'pointer'}} onClick={() => {setDynamicPosition([(Math.random() - 0.5) * 3, (Math.random() - 0.5) * 3, 0])}}>Click Here</button>
       </Html>
     </mesh>
   );
