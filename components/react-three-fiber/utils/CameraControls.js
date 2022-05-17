@@ -1,3 +1,4 @@
+import { PointerLockControls } from "@react-three/drei";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -12,14 +13,28 @@ const CameraControls = () => {
   } = useThree();
 
   const controls = useRef();
-  useFrame((state) => controls.current.update());
   return (
-    <orbitControls
-      ref={controls}
-      args={[camera, domElement]}
-      enableDamping={true}
-    />
+    <PointerLockControls args={[camera, domElement]} onClick={(e) => {console.log(e)}} />
   );
 };
 
 export default CameraControls;
+
+// const CameraControls = () => {
+//   const {
+//     camera,
+//     gl: { domElement },
+//   } = useThree();
+
+//   const controls = useRef();
+//   useFrame((state) => controls.current.update());
+//   return (
+//     <orbitControls
+//       ref={controls}
+//       args={[camera, domElement]}
+//       enableDamping={true}
+//     />
+//   );
+// };
+
+// export default CameraControls;
