@@ -6,8 +6,14 @@ import { useState } from "react";
 import Door from "../components/Door";
 import { PointerLockControls } from "@react-three/drei";
 
+import { Physics, useBox, useSphere } from '@react-three/cannon'
+import Ball from "../components/react-three-fiber/Ball";
+import Plane from "../components/react-three-fiber/Plane";
+
 const Home = () => {
-  const [scene, setScene] = useState(1);
+  const [scene, setScene] = useState(3);
+
+
   return (
     <>
       <h1>Hello</h1>
@@ -24,6 +30,13 @@ const Home = () => {
         }}
       >
         Scene 2
+      </button>
+      <button
+        onClick={() => {
+          setScene(3);
+        }}
+      >
+        Scene 3
       </button>
       <div className="canvasContainer">
         {scene === 1 && (
@@ -44,7 +57,20 @@ const Home = () => {
             <OctohedronMesh position={[0, 0, 0]} />
           </Canvas>
         )}
+
+        {scene === 3 && (
+          <Canvas camera={{ fov: 75, position: [0, 25, 20]}}>
+            <CameraControls />
+            <ambientLight intensity={0.1} />
+            <directionalLight color="#ffffff" position={[2, 2, 5]} />
+            <Physics>
+              <Ball position={[(Math.random() - 0.5) * 15, 2, (Math.random() - 0.5) * 10]}/>
+              <Plane />
+            </Physics>
+          </Canvas>
+        )}
       </div>
+
       <h1>Rest of website</h1>
     </>
   );
