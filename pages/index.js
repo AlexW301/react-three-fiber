@@ -17,7 +17,7 @@ import DirectionalLight from "../components/scene/DirectionalLight";
 import Spotlight from "../components/scene/Spotlight";
 
 const Home = () => {
-  const [scene, setScene] = useState(4);
+  const [scene, setScene] = useState(3);
 
   return (
     <>
@@ -73,7 +73,7 @@ const Home = () => {
         {scene === 3 && (
           <Canvas camera={{ fov: 75, position: [0, 25, 20] }}>
             <CameraControls />
-            <ambientLight intensity={0.1} />
+            <ambientLight intensity={0.6} />
             {/* <directionalLight color="#ffffff" position={[2, 2, 5]} /> */}
             <Physics>
               <Ball
