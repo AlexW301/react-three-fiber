@@ -11,7 +11,6 @@ const Street = (props) => {
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Plane.geometry}
         material={nodes.Plane.material}
@@ -19,7 +18,6 @@ const Street = (props) => {
         scale={[9.02, 1, 14.55]}
       />
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube025.geometry}
         material={nodes.Cube025.material}
@@ -27,7 +25,6 @@ const Street = (props) => {
         scale={[1.31, 0.32, 14.74]}
       />
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube026.geometry}
         material={nodes.Cube026.material}
@@ -35,7 +32,6 @@ const Street = (props) => {
         scale={[0.88, 1, 0.66]}
       />
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.Cube028.geometry}
         material={nodes.Cube028.material}
@@ -44,13 +40,11 @@ const Street = (props) => {
       />
       <group position={[9.02, 11.6, 9.12]} scale={[1.44, 0.08, 0.59]}>
         <mesh
-          castShadow
           receiveShadow
           geometry={nodes.Cube030_1.geometry}
           material={nodes.Cube030_1.material}
         />
         <mesh
-          castShadow
           receiveShadow
           geometry={nodes.Cube030_2.geometry}
           material={nodes.Cube030_2.material}

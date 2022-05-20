@@ -13,7 +13,8 @@ import Plane from "../components/react-three-fiber/Plane";
 import Street from "../components/scene/Street";
 import OldGuy from "../components/scene/OldGuy";
 import Monster from "../components/scene/Monster";
-import PointLight from "../components/scene/PointLight";
+import DirectionalLight from "../components/scene/DirectionalLight";
+import Spotlight from "../components/scene/Spotlight";
 
 const Home = () => {
   const [scene, setScene] = useState(4);
@@ -88,16 +89,19 @@ const Home = () => {
         )}
 
         {scene === 4 && (
-          <Canvas camera={{ fov: 75, position: [0, 25, 20] }}>
+          <Canvas camera={{ fov: 75, position: [0, 25, 20] }} color="black" shadows>
+             <color attach="background" args={["black"]} />
             <CameraControls />
-            {/* <ambientLight intensity={0.1} /> */}
+            <ambientLight intensity={.5} />
+            <fog args={['#262837', 1, 15]} />
             {/* <directionalLight color="#ffffff" position={[9.02, 11.6, -4.37]} /> */}
-            <PointLight />
+            <DirectionalLight/>
+            <Spotlight />
             <Physics>
               <Monster />
               <OldGuy />
               <Street />
-              <Plane />
+              {/* <Plane /> */}
             </Physics>
           </Canvas>
         )}
