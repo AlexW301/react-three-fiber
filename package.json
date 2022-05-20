@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-three/cannon": "^6.3.0",
-    "@react-three/drei": "^9.7.1",
+    "@react-three/drei": "^9.11.2",
     "@react-three/fiber": "^8.0.14",
     "gsap": "^3.10.4",
     "next": "12.1.6",
