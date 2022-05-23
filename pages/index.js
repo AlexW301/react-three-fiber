@@ -71,11 +71,11 @@ const Home = () => {
         )}
 
         {scene === 3 && (
-          <Canvas camera={{ fov: 75, position: [0, 25, 20] }}>
+          <Canvas camera={{ fov: 75, position: [0, 25, -20] }}>
             <CameraControls />
             <ambientLight intensity={0.6} />
-            {/* <directionalLight color="#ffffff" position={[2, 2, 5]} /> */}
-            <Physics gravity={[0, -9.81, 0]}>
+            <directionalLight color="#ffffff" position={[2, 2, 5]} />
+            <Physics defaultContactMaterial={{friction: 0.1, restitution: 0.5, frictionEquationStiffness: 1e6, frictionEquationRelaxation: 1e6}} gravity={[0, -9.81, 0]}>
               <Ball
                 position={[
                   (Math.random() - 0.5) * 15,
@@ -83,6 +83,7 @@ const Home = () => {
                   (Math.random() - 0.5) * 10,
                 ]}
               />
+              
               <Plane />
             </Physics>
           </Canvas>
