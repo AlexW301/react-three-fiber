@@ -75,7 +75,7 @@ const Home = () => {
             <CameraControls />
             <ambientLight intensity={0.6} />
             {/* <directionalLight color="#ffffff" position={[2, 2, 5]} /> */}
-            <Physics>
+            <Physics gravity={[0, -9.81, 0]}>
               <Ball
                 position={[
                   (Math.random() - 0.5) * 15,
