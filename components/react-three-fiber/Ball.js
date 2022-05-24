@@ -21,7 +21,7 @@ const Ball = (props) => {
       let timeHeld = endTime - startTime < 3 ? endTime - startTime : 3
       console.log(timeHeld)
       api.angularDamping.set(0.7)
-      api.applyLocalImpulse([0, 0, 6 * timeHeld], [0,0,0])
+      api.applyLocalImpulse([0, 0, 6 * timeHeld], [0,0,0]) 
     })
   })
 
