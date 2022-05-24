@@ -16,8 +16,11 @@ import Monster from "../components/scene/Monster";
 import DirectionalLight from "../components/scene/DirectionalLight";
 import Spotlight from "../components/scene/Spotlight";
 
+import { useStateContext, StateContext } from "../context/StateContext";
+
 const Home = () => {
   const [scene, setScene] = useState(3);
+  const [hit, setHit] = useState(false)
 
   return (
     <>
@@ -82,8 +85,8 @@ const Home = () => {
                   2,
                   (Math.random() - 0.5) * 10,
                 ]}
+                hit={hit}
               />
-              
               <Plane />
             </Physics>
           </Canvas>
