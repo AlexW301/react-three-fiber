@@ -17,10 +17,11 @@ import DirectionalLight from "../components/scene/DirectionalLight";
 import Spotlight from "../components/scene/Spotlight";
 
 import { useStateContext, StateContext } from "../context/StateContext";
+import Bumper from "../components/react-three-fiber/Bumper";
 
 const Home = () => {
   const [scene, setScene] = useState(3);
-  const [hit, setHit] = useState(false)
+  const [hit, setHit] = useState(false);
 
   return (
     <>
@@ -78,7 +79,15 @@ const Home = () => {
             <CameraControls />
             <ambientLight intensity={0.6} />
             <directionalLight color="#ffffff" position={[2, 2, 5]} />
-            <Physics defaultContactMaterial={{friction: 0.1, restitution: 0.5, frictionEquationStiffness: 1e6, frictionEquationRelaxation: 1e6}} gravity={[0, -9.81, 0]}>
+            <Physics
+              defaultContactMaterial={{
+                friction: 0.1,
+                restitution: 0.5,
+                frictionEquationStiffness: 1e6,
+                frictionEquationRelaxation: 1e6,
+              }}
+              gravity={[0, -9.81, 0]}
+            >
               <Ball
                 position={[
                   (Math.random() - 0.5) * 15,
@@ -86,19 +95,24 @@ const Home = () => {
                   (Math.random() - 0.5) * 10,
                 ]}
               />
+              <Bumper />
               <Plane />
             </Physics>
           </Canvas>
         )}
 
         {scene === 4 && (
-          <Canvas camera={{ fov: 75, position: [0, 25, 20] }} color="black" shadows>
-             <color attach="background" args={["black"]} />
+          <Canvas
+            camera={{ fov: 75, position: [0, 25, 20] }}
+            color="black"
+            shadows
+          >
+            <color attach="background" args={["black"]} />
             <CameraControls />
-            <ambientLight intensity={.5} />
-            <fog args={['#262837', 1, 15]} />
+            <ambientLight intensity={0.5} />
+            <fog args={["#262837", 1, 15]} />
             {/* <directionalLight color="#ffffff" position={[9.02, 11.6, -4.37]} /> */}
-            <DirectionalLight/>
+            <DirectionalLight />
             <Spotlight />
             <Physics>
               <Monster />

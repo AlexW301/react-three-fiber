@@ -20,7 +20,7 @@ const Ball = (props) => {
   const state = useThree();
   const plane = useRef(null);
   let startTime, endTime, timeHeld;
-console.log(plane.current)
+  // console.log(plane.current);
   /** START TIMER ON MOUSE DOWN **/
   window.document.addEventListener("mousedown", () => {
     startTime = state.clock.elapsedTime;
@@ -36,13 +36,12 @@ console.log(plane.current)
     api.angularDamping.set(0.7);
     api.applyLocalImpulse([0, 0, 5 * timeHeld], [0, 0, 0]);
   });
-  
+
   /** ROTATE BALL DIRECTION WITH MOUSE **/
   useFrame(({ mouse }) => {
     const x = mouse.x * Math.PI;
     const y = mouse.y;
     api.rotation.set(0, x, 0);
-
   });
 
   return (
