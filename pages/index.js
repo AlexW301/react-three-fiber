@@ -85,7 +85,6 @@ const Home = () => {
                   2,
                   (Math.random() - 0.5) * 10,
                 ]}
-                hit={hit}
               />
               <Plane />
             </Physics>
