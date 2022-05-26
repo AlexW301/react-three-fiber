@@ -7,7 +7,7 @@ const Plane = (props) => {
   return (
     <mesh ref={ref}>
       <planeGeometry args={[100, 100]} />
-      <meshStandardMaterial color={"#f4fff4"} />
+      <meshStandardMaterial color={"green"} />
     </mesh>
   );
 };
