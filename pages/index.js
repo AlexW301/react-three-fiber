@@ -82,7 +82,7 @@ const Home = () => {
             <Physics
               defaultContactMaterial={{
                 friction: 0.1,
-                restitution: 0.5,
+                restitution: 0.7,
                 frictionEquationStiffness: 1e6,
                 frictionEquationRelaxation: 1e6,
               }}
