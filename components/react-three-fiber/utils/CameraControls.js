@@ -14,7 +14,7 @@ const CameraControls = () => {
 
   const controls = useRef();
   return (
-    <FirstPersonControls lookVertical={false} args={[camera, domElement]} onClick={() => {console.log('res')}} />
+    <FirstPersonControls activeLook={true} lookVertical={false} args={[camera, domElement]} onClick={() => {console.log('res')}} />
   );
 };
 

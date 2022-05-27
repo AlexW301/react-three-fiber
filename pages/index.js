@@ -75,7 +75,7 @@ const Home = () => {
         )}
 
         {scene === 3 && (
-          <Canvas camera={{ fov: 75, position: [0, 25, -20] }}>
+          <Canvas camera={{ fov: 75, position: [0, 35, -10] }}>
             <CameraControls />
             <ambientLight intensity={0.6} />
             <directionalLight color="#ffffff" position={[2, 2, 5]} />
