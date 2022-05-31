@@ -1,4 +1,4 @@
-import { FirstPersonControls } from "@react-three/drei";
+import { FirstPersonControls, PointerLockControls } from "@react-three/drei";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -14,7 +14,7 @@ const CameraControls = () => {
 
   const controls = useRef();
   return (
-    <FirstPersonControls activeLook={true} lookVertical={false} args={[camera, domElement]} onClick={() => {console.log('res')}} />
+    <FirstPersonControls activeLook={false} lookVertical={false} args={[camera, domElement]} onClick={() => {console.log('res')}} />
   );
 };
 
@@ -33,6 +33,9 @@ export default CameraControls;
 //       ref={controls}
 //       args={[camera, domElement]}
 //       enableDamping={true}
+//       enabled={true}
+//       enableZoom={false}
+//       enablePan={false}
 //     />
 //   );
 // };

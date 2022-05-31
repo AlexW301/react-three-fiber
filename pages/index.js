@@ -21,10 +21,10 @@ import Bumper from "../components/react-three-fiber/Bumper";
 
 const Home = () => {
   const [scene, setScene] = useState(3);
-  const [hit, setHit] = useState(false);
+  const { hit } = useStateContext();
 
   return (
-    <>
+    <StateContext>
       <h1>Hello</h1>
       <button
         onClick={() => {
@@ -75,7 +75,7 @@ const Home = () => {
         )}
 
         {scene === 3 && (
-          <Canvas camera={{ fov: 75, position: [0, 35, -10] }}>
+          <Canvas camera={{ fov: 75, position: [0, 25, -10] }}>
             <CameraControls />
             <ambientLight intensity={0.6} />
             <directionalLight color="#ffffff" position={[2, 2, 5]} />
@@ -125,7 +125,7 @@ const Home = () => {
       </div>
 
       <h1>Rest of website</h1>
-    </>
+    </StateContext>
   );
 };
 

@@ -17,6 +17,9 @@ const Ball = (props) => {
   }));
   let startTime, endTime, timeHeld, power, charging, force, ballPosition, pointer;
 
+  // Set camera rotation
+  state.camera.quaternion.set(0, 0.8, 0.45, 0);
+
   startTime = 0;
   power = 0;
   force = 8;
@@ -33,7 +36,6 @@ const Ball = (props) => {
   /******************************/
   /** API SUBSCRIBES / UPDATES **/
   /******************************/
-
   // Updates ballPosition variable
   api.position.subscribe((value) => {
     ballPosition = value;
@@ -41,7 +43,7 @@ const Ball = (props) => {
 
   // Show / Hide HUD based on the balls speed
   api.velocity.subscribe((velocity) => {
-    if (velocity[0] < 0.05) {
+    if (velocity[0] < 0.08 && velocity[0] > 0 || velocity[0] > -0.08 && velocity[0] < 0 || velocity[0] === 0) {
       pointer.current.visible = true;
       window.document.querySelector(
         ".powerDisplay"
@@ -83,10 +85,12 @@ const Ball = (props) => {
 
   useFrame(({ mouse, camera, clock }) => {
     const x = mouse.x * (Math.PI * 1);
-    api.rotation.set(0, -x, 0); // Rotate the ball base on the mouses x position
-
+    const y = mouse.y * (Math.PI * 1);
+    const test = (x - y)
+    console.log(test)
+    api.rotation.set(0, -x * 2, 0); // Rotate the ball base on the mouses x position
     // Update rotation and position of the pointer
-    pointer.current.rotation.set(-Math.PI / 2, 0, -x);
+    pointer.current.rotation.set(-Math.PI / 2, 0, -x * 2);
     pointer.current.position.set(
       ballPosition[0],
       ballPosition[1] - 0.9,
@@ -137,6 +141,7 @@ const Ball = (props) => {
     []
   );
 
+  api.collisionFilterGroup.set(2)
   return (
     <group>
       <mesh position={[0, 5, 0]} ref={ref}>
