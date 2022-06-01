@@ -15,7 +15,7 @@ const Ball = (props) => {
     position: [0, 5, 0],
     ...props,
   }));
-  let startTime, endTime, timeHeld, power, charging, force, ballPosition, pointer;
+  let startTime, endTime, timeHeld, power, charging, force, ballPosition, pointer, mousePos, intersectPoint, raycaster, plane;
 
   // Set camera rotation
   state.camera.quaternion.set(0, 0.8, 0.45, 0);
@@ -26,6 +26,10 @@ const Ball = (props) => {
   charging = false;
   pointer = useRef(null);
   ballPosition = new THREE.Vector3(0, 5, 0); // Get and Update the ball position for use on the pointer
+  mousePos = new THREE.Vector2();
+  intersectPoint = new THREE.Vector3();
+  raycaster = new THREE.Raycaster();
+  plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
 
   /******************************/
   /** TEXTURES **/
@@ -79,6 +83,19 @@ const Ball = (props) => {
     ).innerHTML = `Power ${power}%`;
   });
 
+  // window.addEventListener("mousemove", (event) => {
+  //   mousePos.x = (event.clientX / window.innerWidth) * 2 - 1;
+  //   mousePos.y = (event.clientY / window.innerHeight) * 2 - 1;
+
+  //   raycaster.setFromCamera(mousePos, state.camera);
+  //   raycaster.ray.intersectPlane(plane, intersectPoint);
+  //   console.log(pointer.current.rotation)
+  //   pointer.current.lookAt(intersectPoint)
+  //   ref.current.lookAt(intersectPoint)
+
+    
+  // })
+
   /******************************/
   /** TICK / useFrame() **/
   /******************************/
@@ -86,8 +103,6 @@ const Ball = (props) => {
   useFrame(({ mouse, camera, clock }) => {
     const x = mouse.x * (Math.PI * 1);
     const y = mouse.y * (Math.PI * 1);
-    const test = (x - y)
-    console.log(test)
     api.rotation.set(0, -x * 2, 0); // Rotate the ball base on the mouses x position
     // Update rotation and position of the pointer
     pointer.current.rotation.set(-Math.PI / 2, 0, -x * 2);
@@ -156,11 +171,12 @@ const Ball = (props) => {
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, 0.1, 0]}
       >
-        <planeGeometry args={[4, 4]}></planeGeometry>
+        <planeGeometry args={[4, 4]} ></planeGeometry>
         <meshStandardMaterial
           transparent={true}
           alphaMap={alphaMap}
           map={colorMap}
+          side={THREE.DoubleSide}
         ></meshStandardMaterial>
         {/* <shaderMaterial {...shaderData}></shaderMaterial> */}
       </mesh>
