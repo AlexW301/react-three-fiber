@@ -15,7 +15,7 @@ const Ball = (props) => {
     position: [0, 5, 0],
     ...props,
   }));
-  let startTime, endTime, timeHeld, power, charging, force, ballPosition, pointer, mousePos, intersectPoint, raycaster, plane;
+  let startTime, endTime, timeHeld, power, charging, force, ballPosition, pointer, mousePos, raycaster, plane;
 
   // Set camera rotation
   state.camera.quaternion.set(0, 0.8, 0.45, 0);
@@ -27,7 +27,6 @@ const Ball = (props) => {
   pointer = useRef(null);
   ballPosition = new THREE.Vector3(0, 5, 0); // Get and Update the ball position for use on the pointer
   mousePos = new THREE.Vector2();
-  intersectPoint = new THREE.Vector3();
   raycaster = new THREE.Raycaster();
   plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
 
@@ -83,18 +82,24 @@ const Ball = (props) => {
     ).innerHTML = `Power ${power}%`;
   });
 
-  // window.addEventListener("mousemove", (event) => {
-  //   mousePos.x = (event.clientX / window.innerWidth) * 2 - 1;
-  //   mousePos.y = (event.clientY / window.innerHeight) * 2 - 1;
-
-  //   raycaster.setFromCamera(mousePos, state.camera);
-  //   raycaster.ray.intersectPlane(plane, intersectPoint);
-  //   console.log(pointer.current.rotation)
-  //   pointer.current.lookAt(intersectPoint)
-  //   ref.current.lookAt(intersectPoint)
-
+  const onMouseMove = (event) => {
+    mousePos.x = (event.clientX / window.innerWidth) * 2 -1;
+    mousePos.y = (event.clientY / window.innerHeight) * 2 -1;
+    raycaster.setFromCamera(mousePos, state.camera);
+    const intersection = raycaster.intersectObjects(state.scene.children);
+    console.log(pointer.current.rotation)
+    const test = new THREE.Vector3(intersection[0].point.x, intersection[0].point.y, intersection[0].point.z)
+    // pointer.current.lookAt(test)
+    // ref.current.lookAt(test)
     
-  // })
+  }
+console.log(state.scene.children[3])
+  window.addEventListener("mousemove", onMouseMove);
+
+  const hoverPieces = () => {
+    raycaster.ray.setFromCamera(mousePos, state.camera);
+    
+  }
 
   /******************************/
   /** TICK / useFrame() **/
@@ -103,7 +108,7 @@ const Ball = (props) => {
   useFrame(({ mouse, camera, clock }) => {
     const x = mouse.x * (Math.PI * 1);
     const y = mouse.y * (Math.PI * 1);
-    api.rotation.set(0, -x * 2, 0); // Rotate the ball base on the mouses x position
+    // api.rotation.set(0, -x * 2, 0); // Rotate the ball base on the mouses x position
     // Update rotation and position of the pointer
     pointer.current.rotation.set(-Math.PI / 2, 0, -x * 2);
     pointer.current.position.set(
@@ -156,6 +161,7 @@ const Ball = (props) => {
     []
   );
 
+
   api.collisionFilterGroup.set(2)
   return (
     <group>
@@ -168,7 +174,7 @@ const Ball = (props) => {
       </mesh>
       <mesh
         ref={pointer}
-        rotation={[-Math.PI / 2, 0, 0]}
+        rotation={[-Math.PI / 2, 0, 10]}
         position={[0, 0.1, 0]}
       >
         <planeGeometry args={[4, 4]} ></planeGeometry>

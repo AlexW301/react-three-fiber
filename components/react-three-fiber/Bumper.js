@@ -12,7 +12,7 @@ const Bumper = (props) => {
     console.log(Test())
     const [ref, api] = useBox(() => ({
         mass: 100,
-        position: [0, 1, 20],
+        position: [20, 1, 20],
         args: [20, 1, 1],
         ...props,
         onCollide: (e) => {
