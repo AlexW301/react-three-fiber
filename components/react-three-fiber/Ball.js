@@ -82,24 +82,20 @@ const Ball = (props) => {
     ).innerHTML = `Power ${power}%`;
   });
 
-  const onMouseMove = (event) => {
-    mousePos.x = (event.clientX / window.innerWidth) * 2 -1;
-    mousePos.y = (event.clientY / window.innerHeight) * 2 -1;
-    raycaster.setFromCamera(mousePos, state.camera);
-    const intersection = raycaster.intersectObjects(state.scene.children);
-    console.log(pointer.current.rotation)
-    const test = new THREE.Vector3(intersection[0].point.x, intersection[0].point.y, intersection[0].point.z)
-    // pointer.current.lookAt(test)
-    // ref.current.lookAt(test)
+//   const onMouseMove = (event) => {
+//     mousePos.x = (event.clientX / window.innerWidth) * 2 -1;
+//     mousePos.y = (event.clientY / window.innerHeight) * 2 -1;
+//     raycaster.setFromCamera(mousePos, state.camera);
+//     const intersection = raycaster.intersectObjects(state.scene.children);
+//     // console.log(pointer.current.rotation)
+//     // const test = new THREE.Vector3(intersection[0].point.x, intersection[0].point.y, intersection[0].point.z)
+//     // pointer.current.lookAt(test)
+//     // ref.current.lookAt(test)
     
-  }
-console.log(state.scene.children[3])
-  window.addEventListener("mousemove", onMouseMove);
+//   }
+// console.log(state.scene.children[3])
+//   window.addEventListener("mousemove", onMouseMove);
 
-  const hoverPieces = () => {
-    raycaster.ray.setFromCamera(mousePos, state.camera);
-    
-  }
 
   /******************************/
   /** TICK / useFrame() **/
@@ -108,7 +104,7 @@ console.log(state.scene.children[3])
   useFrame(({ mouse, camera, clock }) => {
     const x = mouse.x * (Math.PI * 1);
     const y = mouse.y * (Math.PI * 1);
-    // api.rotation.set(0, -x * 2, 0); // Rotate the ball base on the mouses x position
+    api.rotation.set(0, -x * 2, 0); // Rotate the ball base on the mouses x position
     // Update rotation and position of the pointer
     pointer.current.rotation.set(-Math.PI / 2, 0, -x * 2);
     pointer.current.position.set(

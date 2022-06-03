@@ -24,108 +24,99 @@ const Home = () => {
   const { hit } = useStateContext();
 
   return (
-    <StateContext>
-      <h1>Hello</h1>
-      <button
-        onClick={() => {
-          setScene(1);
-        }}
-      >
-        Scene 1
-      </button>
-      <button
-        onClick={() => {
-          setScene(2);
-        }}
-      >
-        Scene 2
-      </button>
-      <button
-        onClick={() => {
-          setScene(3);
-        }}
-      >
-        Scene 3
-      </button>
-      <button
-        onClick={() => {
-          setScene(4);
-        }}
-      >
-        Scene 4
-      </button>
-      <div className="canvasContainer">
-        {scene === 1 && (
-          <Canvas>
-            <CameraControls />
-            <ambientLight intensity={0.1} />
-            <directionalLight color="#ffffff" position={[2, 2, 5]} />
-            <Door />
-            {/* <OctohedronMesh position={[0, 0, 0]} /> */}
-          </Canvas>
-        )}
-
-        {scene === 2 && (
-          <Canvas>
-            <CameraControls />
-            <ambientLight intensity={0.1} />
-            <directionalLight color="#ffffff" position={[2, 2, 5]} />
-            <OctohedronMesh position={[0, 0, 0]} />
-          </Canvas>
-        )}
-
-        {scene === 3 && (
-          <Canvas camera={{ fov: 75, position: [0, 25, -10] }}>
-            <CameraControls />
-            <ambientLight intensity={0.6} />
-            <directionalLight color="#ffffff" position={[2, 2, 5]} />
-            <Physics
-              defaultContactMaterial={{
-                friction: 0.1,
-                restitution: 0.7,
-                frictionEquationStiffness: 1e6,
-                frictionEquationRelaxation: 1e6,
-              }}
-              gravity={[0, -9.81, 0]}
-            >
-              <Ball
-                position={[
-                  (Math.random() - 0.5) * 15,
-                  2,
-                  (Math.random() - 0.5) * 10,
-                ]}
-              />
-              <Bumper />
-              <Plane />
-            </Physics>
-          </Canvas>
-        )}
-
-        {scene === 4 && (
-          <Canvas
-            camera={{ fov: 75, position: [0, 25, 20] }}
-            color="black"
-            shadows
-          >
-            <color attach="background" args={["black"]} />
-            <CameraControls />
-            <ambientLight intensity={0.5} />
-            <fog args={["#262837", 1, 15]} />
-            {/* <directionalLight color="#ffffff" position={[9.02, 11.6, -4.37]} /> */}
-            <DirectionalLight />
-            <Spotlight />
-            <Physics>
-              <Monster />
-              <OldGuy />
-              <Street />
-              {/* <Plane /> */}
-            </Physics>
-          </Canvas>
-        )}
+    <div>
+      <div className={styles.nav}>
+        <img src="/pmllogo.png" alt="logo" />
+        <nav className={styles.navLinks}>
+          <ul>
+            <li>Home</li>
+            <li>Learn</li>
+            <li>Our Team</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
       </div>
+      <div className={styles.heroSection}>
+        <div className={styles.infoSection}>
+          <div>
+            <h1 className={styles.header}>Getting a Home Loan Made easy</h1>
+            <h5 className={styles.subHeader}>
+              Learn more about home loans by watching our free informational
+              class or playing a game!
+            </h5>
+          </div>
+        </div>
+        <div className={styles.canvasContainer}>
+          {scene === 1 && (
+            <Canvas>
+              <CameraControls />
+              <ambientLight intensity={0.1} />
+              <directionalLight color="#ffffff" position={[2, 2, 5]} />
+              <Door />
+              {/* <OctohedronMesh position={[0, 0, 0]} /> */}
+            </Canvas>
+          )}
 
-      <h1>Rest of website</h1>
-    </StateContext>
+          {scene === 2 && (
+            <Canvas>
+              <CameraControls />
+              <ambientLight intensity={0.1} />
+              <directionalLight color="#ffffff" position={[2, 2, 5]} />
+              <OctohedronMesh position={[0, 0, 0]} />
+            </Canvas>
+          )}
+
+          {scene === 3 && (
+            <Canvas camera={{ fov: 75, position: [0, 25, -10] }}>
+              <CameraControls />
+              <ambientLight intensity={0.6} />
+              <directionalLight color="#ffffff" position={[2, 2, 5]} />
+              <Physics
+                defaultContactMaterial={{
+                  friction: 0.1,
+                  restitution: 0.7,
+                  frictionEquationStiffness: 1e6,
+                  frictionEquationRelaxation: 1e6,
+                }}
+                gravity={[0, -9.81, 0]}
+              >
+                <Ball
+                  position={[
+                    (Math.random() - 0.5) * 15,
+                    2,
+                    (Math.random() - 0.5) * 10,
+                  ]}
+                />
+                <Bumper />
+                <Plane />
+              </Physics>
+            </Canvas>
+          )}
+
+          {scene === 4 && (
+            <Canvas
+              camera={{ fov: 75, position: [0, 25, 20] }}
+              color="black"
+              shadows
+            >
+              <color attach="background" args={["black"]} />
+              <CameraControls />
+              <ambientLight intensity={0.5} />
+              <fog args={["#262837", 1, 15]} />
+              {/* <directionalLight color="#ffffff" position={[9.02, 11.6, -4.37]} /> */}
+              <DirectionalLight />
+              <Spotlight />
+              <Physics>
+                <Monster />
+                <OldGuy />
+                <Street />
+                {/* <Plane /> */}
+              </Physics>
+            </Canvas>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 

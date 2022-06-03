@@ -1,0 +1,40 @@
+.heroSection {
+    display: flex;
+
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.navLinks ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.infoSection {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    font-size: 75px;
+}
+
+.subHeader {
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.canvasContainer
+{
+  height: 800px;
+  width: 50vw;
+}
