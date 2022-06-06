@@ -16,6 +16,7 @@ import Monster from "../components/scene/Monster";
 import DirectionalLight from "../components/scene/DirectionalLight";
 import Spotlight from "../components/scene/Spotlight";
 import VrModel from "../components/VrModel";
+import Test from "../components/Test";
 
 import { useStateContext, StateContext } from "../context/StateContext";
 import Bumper from "../components/react-three-fiber/Bumper";
@@ -59,11 +60,12 @@ const Home = () => {
         <div className={styles.canvasContainer}>
           {scene === 1 && (
             <Canvas>
-              <CameraControls />
+              {/* <CameraControls /> */}
               <ambientLight intensity={0.1} />
               <directionalLight color="#ffffff" position={[2, 2, 5]} />
               {/* <Door /> */}
-              <VrModel scroll={scroll}/>
+              {/* <VrModel scroll={scroll}/> */}
+              <Test />
               {/* <OctohedronMesh position={[0, 0, 0]} /> */}
             </Canvas>
           )}
