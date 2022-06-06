@@ -15,6 +15,7 @@ import OldGuy from "../components/scene/OldGuy";
 import Monster from "../components/scene/Monster";
 import DirectionalLight from "../components/scene/DirectionalLight";
 import Spotlight from "../components/scene/Spotlight";
+import VrModel from "../components/VrModel";
 
 import { useStateContext, StateContext } from "../context/StateContext";
 import Bumper from "../components/react-three-fiber/Bumper";
@@ -22,6 +23,7 @@ import Bumper from "../components/react-three-fiber/Bumper";
 const Home = () => {
   const [scene, setScene] = useState(3);
   const { hit } = useStateContext();
+  const scroll = useRef()
 
   return (
     <div>
@@ -44,6 +46,14 @@ const Home = () => {
               Learn more about home loans by watching our free informational
               class or playing a game!
             </h5>
+            <div className={styles.btnContainer}>
+              <button className={styles.primaryBtn}>
+                Apply Now
+              </button>
+              <button className={styles.secondaryBtn}>
+                Play Game
+              </button>
+            </div>
           </div>
         </div>
         <div className={styles.canvasContainer}>
@@ -52,7 +62,8 @@ const Home = () => {
               <CameraControls />
               <ambientLight intensity={0.1} />
               <directionalLight color="#ffffff" position={[2, 2, 5]} />
-              <Door />
+              {/* <Door /> */}
+              <VrModel scroll={scroll}/>
               {/* <OctohedronMesh position={[0, 0, 0]} /> */}
             </Canvas>
           )}
