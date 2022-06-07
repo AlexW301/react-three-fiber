@@ -17,12 +17,13 @@ import DirectionalLight from "../components/scene/DirectionalLight";
 import Spotlight from "../components/scene/Spotlight";
 import VrModel from "../components/VrModel";
 import Test from "../components/Test";
+import RoadScene from "../components/RoadScene";
 
 import { useStateContext, StateContext } from "../context/StateContext";
 import Bumper from "../components/react-three-fiber/Bumper";
 
 const Home = () => {
-  const [scene, setScene] = useState(3);
+  const [scene, setScene] = useState(1);
   const { hit } = useStateContext();
   const scroll = useRef()
 
@@ -32,8 +33,8 @@ const Home = () => {
         <img src="/pmllogo.png" alt="logo" />
         <nav className={styles.navLinks}>
           <ul>
-            <li>Home</li>
-            <li>Learn</li>
+            <li onClick={() => {setScene(1)}}>Home</li>
+            <li onClick={() => {setScene(3)}}>Learn</li>
             <li>Our Team</li>
             <li>Contact</li>
           </ul>
@@ -65,7 +66,8 @@ const Home = () => {
               <directionalLight color="#ffffff" position={[2, 2, 5]} />
               {/* <Door /> */}
               {/* <VrModel scroll={scroll}/> */}
-              <Test />
+              {/* <Test /> */}
+              <RoadScene />
               {/* <OctohedronMesh position={[0, 0, 0]} /> */}
             </Canvas>
           )}
