@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations, PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
+import CameraControls from "./react-three-fiber/utils/CameraControls";
+import { Camera } from "three";
 
 const color = new THREE.Color();
 

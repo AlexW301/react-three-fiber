@@ -58,7 +58,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className={styles.canvasContainer}>
+        <div className={scene === 1 ? styles.canvasContainer : styles.golfGame}>
           {scene === 1 && (
             <Canvas>
               {/* <CameraControls /> */}
@@ -82,7 +82,7 @@ const Home = () => {
           )}
 
           {scene === 3 && (
-            <Canvas camera={{ fov: 75, position: [0, 25, -10] }}>
+            <Canvas className={styles.golfGame} camera={{ fov: 75, position: [0, 25, -10] }}>
               <CameraControls />
               <ambientLight intensity={0.6} />
               <directionalLight color="#ffffff" position={[2, 2, 5]} />

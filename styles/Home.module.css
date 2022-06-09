@@ -55,6 +55,16 @@
   z-index: 0;
 }
 
+.golfGame
+{
+  height: 800px;
+  width: 50%;
+  /* position: absolute;
+  width: 100%;
+  right: -13%;
+  z-index: 0; */
+}
+
 .btnContainer {
     display: flex;
     gap: 10px;
