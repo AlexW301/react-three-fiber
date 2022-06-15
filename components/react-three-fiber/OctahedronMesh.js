@@ -16,7 +16,7 @@ const OctohedronMesh = ({position}) => {
           transform: `scale(${hidden ? 0.5 : 1})`
         }}
         distanceFactor={1.5}
-        position={[0, 0, 0.51]}
+        position={[0, 0, 0]}
         transform
         occlude
         onOcclude={setVisible}>
