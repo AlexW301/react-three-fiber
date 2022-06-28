@@ -1,6 +1,6 @@
 .heroSection {
     display: flex;
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 0 auto;
     height: 800px;
 }
@@ -53,6 +53,10 @@
   width: 100%;
   right: -13%;
   z-index: 0;
+
+  width: 100%;
+  left: 200px;
+  
 }
 
 .golfGame

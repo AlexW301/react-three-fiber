@@ -25,7 +25,7 @@ import Bumper from "../components/react-three-fiber/Bumper";
 const Home = () => {
   const [scene, setScene] = useState(1);
   const { hit } = useStateContext();
-  const scroll = useRef()
+  const scroll = useRef();
 
   return (
     <div>
@@ -33,8 +33,20 @@ const Home = () => {
         <img src="/pmllogo.png" alt="logo" />
         <nav className={styles.navLinks}>
           <ul>
-            <li onClick={() => {setScene(1)}}>Home</li>
-            <li onClick={() => {setScene(3)}}>Learn</li>
+            <li
+              onClick={() => {
+                setScene(1);
+              }}
+            >
+              Home
+            </li>
+            <li
+              onClick={() => {
+                setScene(3);
+              }}
+            >
+              Learn
+            </li>
             <li>Our Team</li>
             <li>Contact</li>
           </ul>
@@ -42,19 +54,16 @@ const Home = () => {
       </div>
       <div className={styles.heroSection}>
         <div className={styles.infoSection}>
-          <div>
-            <h1 className={styles.header}>Getting a Home Loan Made easy</h1>
-            <h5 className={styles.subHeader}>
-              Learn more about home loans by watching our free informational
-              class or playing a game!
-            </h5>
-            <div className={styles.btnContainer}>
-              <button className={styles.primaryBtn}>
-                Apply Now
-              </button>
-              <button className={styles.secondaryBtn}>
-                Play Game
-              </button>
+          <div className="flex flex-col gap-9">
+            <h1 className="text-8xl text-transparent capitalize bg-clip-text bg-gradient-to-r from-red-600 to-red-900">
+              Let's go for a ride!
+            </h1>
+            <div className="flex flex-col gap-4 items-center text-center h-fit py-5 px-3 bg-white border-2 border-red-700 rounded-md shadow-md">
+            <h2 className="text-gray-700 text-3xl w-fit">Are you looking to purchase or refinance?</h2>
+            <div className="flex gap-4 w-fit">
+              <button className="px-7 py-3 text-white tracking-wide rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:to-red-800 hover:from-red-700">Purchase</button>
+              <button className="px-7 py-3 text-white tracking-wide rounded-md bg-gradient-to-r from-red-600 to-red-700 hover:to-red-800 hover:from-red-700">Refinance</button>
+            </div>
             </div>
           </div>
         </div>
@@ -82,7 +91,10 @@ const Home = () => {
           )}
 
           {scene === 3 && (
-            <Canvas className={styles.golfGame} camera={{ fov: 75, position: [0, 25, -10] }}>
+            <Canvas
+              className={styles.golfGame}
+              camera={{ fov: 75, position: [0, 25, -10] }}
+            >
               <CameraControls />
               <ambientLight intensity={0.6} />
               <directionalLight color="#ffffff" position={[2, 2, 5]} />
