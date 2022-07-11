@@ -184,6 +184,8 @@ export default function RoadScene() {
   //     document.body.style.cursor = hovered ? "pointer" : "auto"
   //   }, [hovered])
   useFrame((state) => {
+         const vec = new THREE.Vector3()
+     state.camera.position.lerp(vec.set(state.mouse.x, state.mouse.y, 0), 0.05)
     actions["CameraAction.001"].time = THREE.MathUtils.lerp(
       actions["CameraAction.001"].time,
       actions["CameraAction.001"].getClip().duration * timeline,
@@ -249,3 +251,101 @@ export default function RoadScene() {
 }
 
 useGLTF.preload("/assets/car/car.glb");
+
+// import * as THREE from "three";
+// import React, { useEffect, useRef, useState } from "react";
+// import { useGLTF, useAnimations, PerspectiveCamera } from "@react-three/drei";
+// import { useFrame } from "@react-three/fiber";
+// import { Html } from "@react-three/drei";
+// import CameraControls from "./react-three-fiber/utils/CameraControls";
+// import { Camera } from "three";
+
+// const color = new THREE.Color();
+
+// export default function RoadScene() {
+//   const group = useRef();
+//   const { nodes, materials, animations } = useGLTF("/assets/house/house.glb");
+//   console.log(animations);
+//   const { actions } = useAnimations(animations, group);
+//   const [hovered, set] = useState();
+//   const [timeline, setTimeline] = useState(0);
+//   const extras = {
+//     receiveShadow: true,
+//     castShadow: true,
+//     "material-envMapIntensity": 0.2,
+//   };
+//   useEffect(
+//     () => void (actions["CameraAction"].play().paused = true),
+//     [actions]
+//   );
+//   useEffect(() => void (actions["doorAction"].play().paused = true), [actions]);
+//   //   useEffect(() => {
+//   //     if (hovered) group.current.getObjectByName(hovered).material.color.set("white")
+//   //     document.body.style.cursor = hovered ? "pointer" : "auto"
+//   //   }, [hovered])
+//   useFrame((state) => {
+//     // const vec = new THREE.Vector3()
+//     // state.camera.position.lerp(vec.set(state.mouse.x, state.mouse.y, 0), 0.05)
+//     actions["CameraAction"].time = THREE.MathUtils.lerp(
+//       actions["CameraAction"].time,
+//       actions["CameraAction"].getClip().duration * timeline,
+//       0.02
+//     );
+//     actions["doorAction"].time = THREE.MathUtils.lerp(
+//       actions["doorAction"].time,
+//       actions["doorAction"].getClip().duration * timeline,
+//       0.03
+//     );
+//     group.current.children[0].children.forEach((child, index) => {
+//       let rx = Math.sin((et + index * 2000) / 1) / 10;
+//       let ry = Math.cos((et + index * 2000) / 1) / 10;
+//       const et = state.clock.elapsedTime;
+//       if (child.name === "car") {
+//         child.position.y = Math.sin((et + index * 100) / 1) * 0.05;
+//         // child.rotation.x = Math.sin((et + index * 2000) / 3) / 10
+//         child.rotation.y = Math.cos((et + index * 2000) / 2) / 50;
+//         // child.rotation.z = Math.sin((et + index * 2000) / 3) / 10
+//       }
+//     });
+//   });
+
+//   return (
+//     <group ref={group} dispose={null}>
+//       <group
+//         position={[0, 0, 0]}
+//         scale={[1, 1, 1]}
+//         onClick={() => {
+//           setTimeline(timeline === 1 ? 0 : 1);
+//         }}
+//       >
+//         <primitive object={nodes.house} />
+//         <primitive object={nodes.door} />
+//       </group>
+//       <group name="Camera">
+//         <PerspectiveCamera
+//           makeDefault
+//           far={100}
+//           near={0.01}
+//           fov={25}
+//           rotation={[-1.6, 0, 0]}
+//           position={[0, 0, 0]}
+//         >
+//           <directionalLight
+//             castShadow
+//             position={[10, 20, 15]}
+//             shadow-camera-right={8}
+//             shadow-camera-top={8}
+//             shadow-camera-left={-8}
+//             shadow-camera-bottom={-8}
+//             shadow-mapSize-width={1024}
+//             shadow-mapSize-height={1024}
+//             intensity={2}
+//             shadow-bias={-0.0001}
+//           />
+//         </PerspectiveCamera>
+//       </group>
+//     </group>
+//   );
+// }
+
+// useGLTF.preload("/assets/house/house.glb");
